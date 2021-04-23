@@ -5,7 +5,7 @@ RSpec.describe 'flights index page' do
     @airline = Airline.create!(name: 'Southwest')
 
     @flight1 = @airline.flights.create!(number: '1234', date: '04/23/21', departure_city: 'Denver', arrival_city: 'Tampa')
-    @flight2 = @airline.flights.create!(number: '5678', date: '05/15/21' departure_city: 'Tampa', arrival_city: 'Pittsburgh')
+    @flight2 = @airline.flights.create!(number: '5678', date: '05/15/21', departure_city: 'Tampa', arrival_city: 'Pittsburgh')
     
     @passenger1 = Passenger.create!(name: 'John Doe', age: 45)
     @passenger2 = Passenger.create!(name: 'Jane Doe', age: 44)
@@ -20,6 +20,8 @@ RSpec.describe 'flights index page' do
     PassengerFlight.create(flight: @flight2, passenger: @passenger1)
     PassengerFlight.create(flight: @flight2, passenger: @passenger2)
     PassengerFlight.create(flight: @flight2, passenger: @passenger3)
+    
+    visit flights_path
   end
   
   context 'you visit the flights index page' do
