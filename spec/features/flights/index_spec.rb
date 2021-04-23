@@ -60,7 +60,7 @@ RSpec.describe 'flights index page' do
     it 'clicking the remove button gets rid of the passenger from the list' do
       within '#1234' do
         expect(page).to have_content(@passenger1.name)
-        click_button 'Remove'
+        first(:button, 'Remove').click
       end
 
       expect(current_path).to eq(flights_path)
