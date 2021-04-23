@@ -35,8 +35,8 @@ RSpec.describe 'airlines show page' do
       expect(page).to have_content(@passenger2.name, count: 1)
       expect(page).to have_content(@passenger3.name, count: 1)
       
-      expect(page).to_not have_content(@passenger4.name)
-      expect(page).to_not have_content(@passenger5.name)
+      expect(page).to_not have_content(@passenger4.name) #too young
+      expect(page).to_not have_content(@passenger5.name) #different airline
     end
   end
 end
