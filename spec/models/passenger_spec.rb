@@ -35,7 +35,7 @@ RSpec.describe Passenger, type: :model do
       end
     
       it 'returns a unique list of adult passengers with flights on a particular airline' do
-        expect(Passenger.passengers_by_airline(@airline)).to eq([@passenger1, @passenger2, @passenger3])
+        expect(Passenger.passengers_by_airline(@airline)).to eq([@passenger2, @passenger1, @passenger3])
       end
     end
   end
