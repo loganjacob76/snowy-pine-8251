@@ -20,7 +20,7 @@ RSpec.describe 'flights index page' do
     PassengerFlight.create(flight: @flight2, passenger: @passenger1)
     PassengerFlight.create(flight: @flight2, passenger: @passenger2)
     PassengerFlight.create(flight: @flight2, passenger: @passenger3)
-    
+
     visit flights_path
   end
   
@@ -42,6 +42,31 @@ RSpec.describe 'flights index page' do
         expect(page).to have_content(@passenger1.name)
         expect(page).to have_content(@passenger2.name)
         expect(page).to have_content(@passenger3.name)
+      end
+    end
+  end
+
+  context 'you want to remove a passenger from a flight' do
+    it 'there are buttons to remove passengers from the flight' do
+      within '#1234' do
+        expect(page).to have_button('Remove')
+      end
+
+      within '#5678' do
+        expect(page).to have_button('Remove')
+      end
+    end
+
+    it 'clicking the remove button gets rid of the passenger from the list' do
+      within '#1234' do
+        expect(page).to have_content(@passenger1.name)
+        click_button 'Remove'
+      end
+
+      expect(current_path).to eq(flights_path)
+
+      within '#1234' do
+        expect(page).to_not have_content(@passenger1.name)
       end
     end
   end
